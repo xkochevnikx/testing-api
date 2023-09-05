@@ -1,0 +1,4 @@
+.app.dark {
+    background-color: var(--bg-color-inverted);
+    color: var(--font-color-inverted);
+}

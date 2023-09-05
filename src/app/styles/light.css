@@ -1,0 +1,4 @@
+.app.light {
+    background-color: var(--bg-color);
+    color: var(--font-color);
+}

@@ -1,11 +1,14 @@
 @import './reset.css';
 @import './variables.css';
+@import './dark.css';
+@import './light.css';
 
 @font-face {
     font-family: Consolas;
     src: local('Consolas'), url('./fonts/Consolas.ttf');
 }
 
-body {
+.app {
     font-family: Consolas;
+    min-height: 100vh;
 }
