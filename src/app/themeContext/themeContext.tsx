@@ -7,11 +7,11 @@ export interface IThemeContextProps {
     setTheme?: (Theme: Theme) => void;
 }
 
-export const ThemeContext = createContext<IThemeContextProps>({});
-
 interface IThemeProviderProps {
     children: ReactNode;
 }
+
+export const ThemeContext = createContext<IThemeContextProps>({});
 
 const defaultTheme =
     (localStorage.getItem(LOCAL_STORAGE_THEME_KEY) as Theme) || Theme.LIGHT;
