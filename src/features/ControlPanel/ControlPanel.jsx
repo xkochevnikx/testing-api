@@ -6,17 +6,13 @@ import { MyButton } from '../../shared/ui/MyButton/MyButton';
 import { LOCAL_STORAGE_USERS } from '../../shared/consts/consts';
 import cls from './ControlPanel.module.css';
 import { ThemeSwitcher } from '../../entities/ThemeSwitcher/ThemeSwitcher';
-import { useUsers } from '../../shared/hooks/useUsers';
 
 export const ControlPanel = () => {
-    //флаг состояния по которому осуществляется фильтрация в столбе "Возраст".
-    const [sort, setSort] = useState(false);
-
-    const { state, addUser } = useContext(UsersContext);
+    const { state, addUser, changeSort } = useContext(UsersContext);
 
     const [name, setName] = useState('');
     const [age, setAge] = useState(0);
-    const [subs, setSubs] = useState('');
+    const [subs, setSubs] = useState('Subscribed');
     const [employed, setEmployed] = useState(false);
 
     useEffect(() => {
@@ -35,11 +31,9 @@ export const ControlPanel = () => {
         addUser(newUser);
         setName('');
         setAge(0);
-        setSubs('');
+        setSubs('Subscribed');
         setEmployed(false);
     };
-
-    const sortedUsers = useUsers(state.users, sort);
 
     const options = [
         {
@@ -69,7 +63,7 @@ export const ControlPanel = () => {
                     type="number"
                     placeholder="возраст"
                     value={age}
-                    onChange={(e) => setAge(e.target.value)}
+                    onChange={(e) => setAge(+e.target.value)}
                 />
                 <MySelect
                     name="subscrib"
@@ -88,9 +82,10 @@ export const ControlPanel = () => {
                     Insert
                 </MyButton>
             </form>
+
             <div className={cls.switchers}>
                 <ThemeSwitcher />
-                <MyButton onClick={() => setSort(!sort)}>Sort</MyButton>
+                <MyButton onClick={() => changeSort()}>Sort</MyButton>
             </div>
 
             <MyButton>Delete</MyButton>

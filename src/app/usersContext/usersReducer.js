@@ -7,6 +7,11 @@ export const reducer = (state, { type, payload }) => {
                 ...state,
                 users: [...state.users, payload],
             };
+        case 'CHANGE_SORT':
+            return {
+                ...state,
+                sort: !state.sort,
+            };
 
         default:
             return state;

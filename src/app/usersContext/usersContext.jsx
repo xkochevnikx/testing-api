@@ -9,6 +9,7 @@ export const UsersContextProvider = (props) => {
     const [state, dispatch] = useReducer(reducer, {
         users: [],
         taskToEdit: {},
+        sort: false,
     });
 
     const getUsers = useCallback((users) => {
@@ -19,10 +20,15 @@ export const UsersContextProvider = (props) => {
         dispatch({ type: 'ADD_USER', payload: user });
     }, []);
 
+    const changeSort = useCallback(() => {
+        dispatch({ type: 'CHANGE_SORT' });
+    }, []);
+
     const defaultProps = {
         state,
         getUsers,
         addUser,
+        changeSort,
     };
 
     return (
