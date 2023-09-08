@@ -1,28 +1,28 @@
-import { createContext, useReducer } from 'react';
-
-const INIT_STATE = {
-    users: [],
-};
-
-const reducer = (state, action) => {
-    switch (action.type) {
-        // case :
-        //     return { ...state, users: action.payload };
-
-        default:
-            return state;
-    }
-};
+import { createContext, useCallback, useReducer } from 'react';
+import { reducer } from './usersReducer';
 
 export const UsersContext = createContext();
 
 export const UsersContextProvider = (props) => {
     const { children } = props;
 
-    const [state, dispatch] = useReducer(reducer, INIT_STATE);
+    const [state, dispatch] = useReducer(reducer, {
+        users: [],
+        taskToEdit: {},
+    });
+
+    const getUsers = useCallback((users) => {
+        dispatch({ type: 'GET_USERS', payload: users });
+    }, []);
+
+    const addUser = useCallback((user) => {
+        dispatch({ type: 'ADD_USER', payload: user });
+    }, []);
 
     const defaultProps = {
         state,
+        getUsers,
+        addUser,
     };
 
     return (

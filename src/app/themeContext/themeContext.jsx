@@ -1,9 +1,9 @@
 import { createContext, useMemo, useState } from 'react';
-import { LOCAL_STORAGE_THEME_KEY } from '../../shared/consts/localstorage';
+import { LOCAL_STORAGE_THEME_KEY } from '../../shared/consts/consts';
 
 export const ThemeContext = createContext();
 
-const defaultTheme = localStorage.getItem(LOCAL_STORAGE_THEME_KEY || 'light');
+const defaultTheme = localStorage.getItem(LOCAL_STORAGE_THEME_KEY);
 
 export const ThemeProvider = (props) => {
     const { children } = props;
