@@ -1,7 +1,8 @@
 import { useContext, useEffect } from 'react';
 import { UsersContext } from '../../app/usersContext/usersContext';
 import { LOCAL_STORAGE_USERS } from '../../shared/consts/consts';
-import { ControlPanel } from '../../features/ControlPanel/ControlPanel';
+import cls from './MainPage.module.css';
+import EmployeeAccounting from '../../widgets/EmployeeAccounting/EmployeeAccounting';
 
 export const MainPage = () => {
     const { getUsers } = useContext(UsersContext);
@@ -15,5 +16,9 @@ export const MainPage = () => {
         }
     }, []);
 
-    return <ControlPanel />;
+    return (
+        <main className={cls.pageWrapper}>
+            <EmployeeAccounting />
+        </main>
+    );
 };

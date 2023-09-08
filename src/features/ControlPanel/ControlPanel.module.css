@@ -1,0 +1,19 @@
+.formWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+    border: 1px solid black;
+    max-width: 300px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.switchers {
+    display: flex;
+    justify-content: space-between;
+}

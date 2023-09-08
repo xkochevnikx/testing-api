@@ -5,8 +5,8 @@ export function MySelect(props) {
     const { item, ...otherProps } = props;
     return (
         <select {...otherProps} className={cls.myInput}>
-            {item.map((elem) => (
-                <option>{elem.title}</option>
+            {item.map((elem, i) => (
+                <option key={i}>{elem.title}</option>
             ))}
         </select>
     );

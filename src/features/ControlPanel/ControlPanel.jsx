@@ -4,12 +4,20 @@ import { MyInput } from '../../shared/ui/MyInput/MyInput';
 import { MySelect } from '../../shared/ui/MySelect/MySelect';
 import { MyButton } from '../../shared/ui/MyButton/MyButton';
 import { LOCAL_STORAGE_USERS } from '../../shared/consts/consts';
+import cls from './ControlPanel.module.css';
+import { ThemeSwitcher } from '../../entities/ThemeSwitcher/ThemeSwitcher';
+import { useUsers } from '../../shared/hooks/useUsers';
 
 export const ControlPanel = () => {
+    //флаг состояния по которому осуществляется фильтрация в столбе "Возраст".
+    const [sort, setSort] = useState(false);
+
     const { state, addUser } = useContext(UsersContext);
 
     const [name, setName] = useState('');
     const [age, setAge] = useState(0);
+    const [subs, setSubs] = useState('');
+    const [employed, setEmployed] = useState(false);
 
     useEffect(() => {
         localStorage.setItem(LOCAL_STORAGE_USERS, JSON.stringify(state.users));
@@ -20,10 +28,18 @@ export const ControlPanel = () => {
         let newUser = {
             name,
             age,
+            subscribe: subs,
+            employed,
             id: Date.now(),
         };
         addUser(newUser);
+        setName('');
+        setAge(0);
+        setSubs('');
+        setEmployed(false);
     };
+
+    const sortedUsers = useUsers(state.users, sort);
 
     const options = [
         {
@@ -39,27 +55,45 @@ export const ControlPanel = () => {
             selected: false,
         },
     ];
+
     return (
-        <form>
-            <MyInput
-                type="text"
-                placeholder="имя"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-            />
-            <MyInput
-                type="number"
-                placeholder="возраст"
-                value={age}
-                onChange={(e) => setAge(e.target.value)}
-            />
-            <MySelect name="subscrib" item={options} />
+        <div className={cls.formWrapper}>
+            <form className={cls.form}>
+                <MyInput
+                    type="text"
+                    placeholder="имя"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                />
+                <MyInput
+                    type="number"
+                    placeholder="возраст"
+                    value={age}
+                    onChange={(e) => setAge(e.target.value)}
+                />
+                <MySelect
+                    name="subscrib"
+                    item={options}
+                    onChange={(e) => setSubs(e.target.value)}
+                    value={subs}
+                />
 
-            <MyInput type="checkbox" />
+                <MyInput
+                    type="checkbox"
+                    onChange={(e) => setEmployed(e.target.checked)}
+                    className={cls.formCheckbox}
+                />
 
-            <MyButton onClick={(e) => onAddUser(e)} type="submit">
-                Отправить
-            </MyButton>
-        </form>
+                <MyButton onClick={(e) => onAddUser(e)} type="submit">
+                    Insert
+                </MyButton>
+            </form>
+            <div className={cls.switchers}>
+                <ThemeSwitcher />
+                <MyButton onClick={() => setSort(!sort)}>Sort</MyButton>
+            </div>
+
+            <MyButton>Delete</MyButton>
+        </div>
     );
 };
