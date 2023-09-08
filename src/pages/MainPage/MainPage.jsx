@@ -1,6 +1,7 @@
 import { useContext, useEffect } from 'react';
 import { UsersContext } from '../../app/usersContext/usersContext';
 import { LOCAL_STORAGE_USERS } from '../../shared/consts/consts';
+import { ControlPanel } from '../../features/ControlPanel/ControlPanel';
 
 export const MainPage = () => {
     const { getUsers } = useContext(UsersContext);
@@ -14,5 +15,5 @@ export const MainPage = () => {
         }
     }, []);
 
-    return ();
+    return <ControlPanel />;
 };

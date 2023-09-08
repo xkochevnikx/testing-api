@@ -3,6 +3,7 @@ import { UsersContext } from '../../app/usersContext/usersContext';
 import { MyInput } from '../../shared/ui/MyInput/MyInput';
 import { MySelect } from '../../shared/ui/MySelect/MySelect';
 import { MyButton } from '../../shared/ui/MyButton/MyButton';
+import { LOCAL_STORAGE_USERS } from '../../shared/consts/consts';
 
 export const ControlPanel = () => {
     const { state, addUser } = useContext(UsersContext);
