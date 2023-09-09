@@ -12,7 +12,7 @@ export const ControlPanel = () => {
     const { addUser, changeSort, state, getUsers } = useContext(UsersContext);
 
     const [name, setName] = useState('');
-    const [age, setAge] = useState(0);
+    const [age, setAge] = useState('');
     const [subs, setSubs] = useState('Subscribed');
     const [employed, setEmployed] = useState(false);
 
@@ -27,7 +27,7 @@ export const ControlPanel = () => {
         };
         addUser(newUser);
         setName('');
-        setAge(0);
+        setAge('');
         setSubs('Subscribed');
         setEmployed(false);
         let users = localStorage.getItem(LOCAL_STORAGE_USERS);

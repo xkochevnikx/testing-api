@@ -4,7 +4,7 @@ import cls from './MySelect.module.css';
 export function MySelect(props) {
     const { item, ...otherProps } = props;
     return (
-        <select {...otherProps} className={cls.myInput}>
+        <select {...otherProps} className={cls.mySelect}>
             {item.map((elem, i) => (
                 <option key={i}>{elem.title}</option>
             ))}

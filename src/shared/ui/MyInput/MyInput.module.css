@@ -1,0 +1,8 @@
+.myInput {
+    padding: 5px;
+    outline: none;
+}
+
+.myInput:focus::placeholder {
+    opacity: 0;
+}

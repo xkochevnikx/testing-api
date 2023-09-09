@@ -4,7 +4,7 @@
     gap: 10px;
     padding: 20px;
     border: 1px solid black;
-    max-width: 300px;
+    border-radius: 5px;
 }
 
 .form {
@@ -16,4 +16,11 @@
 .switchers {
     display: flex;
     justify-content: space-between;
+}
+
+.formCheckbox {
+    margin-left: auto;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
 }
