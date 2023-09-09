@@ -9,7 +9,7 @@ import { ThemeSwitcher } from '../../entities/ThemeSwitcher/ThemeSwitcher';
 import { options } from '../../shared/consts/optionsTitle';
 
 export const ControlPanel = () => {
-    const { addUser, changeSort } = useContext(UsersContext);
+    const { addUser, changeSort, state, getUsers } = useContext(UsersContext);
 
     const [name, setName] = useState('');
     const [age, setAge] = useState(0);
@@ -34,6 +34,14 @@ export const ControlPanel = () => {
         let dataUsers = JSON.parse(users);
         dataUsers.push(newUser);
         localStorage.setItem(LOCAL_STORAGE_USERS, JSON.stringify(dataUsers));
+    };
+
+    const removeUser = (id) => {
+        let users = localStorage.getItem(LOCAL_STORAGE_USERS);
+        let dataUsers = JSON.parse(users);
+        let data = dataUsers.filter((user) => user.id !== id);
+        localStorage.setItem(LOCAL_STORAGE_USERS, JSON.stringify(data));
+        getUsers(data);
     };
 
     return (
@@ -74,7 +82,9 @@ export const ControlPanel = () => {
                 <MyButton onClick={() => changeSort()}>Sort</MyButton>
             </div>
 
-            <MyButton>Delete</MyButton>
+            <MyButton onClick={() => removeUser(state.selected)}>
+                Delete
+            </MyButton>
         </div>
     );
 };
