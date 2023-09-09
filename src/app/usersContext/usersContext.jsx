@@ -10,6 +10,7 @@ export const UsersContextProvider = (props) => {
         users: [],
         taskToEdit: {},
         sort: false,
+        selected: null,
     });
 
     const getUsers = useCallback((users) => {
@@ -24,8 +25,8 @@ export const UsersContextProvider = (props) => {
         dispatch({ type: 'CHANGE_SORT' });
     }, []);
 
-    const deleteUser = useCallback((id) => {
-        dispatch({ type: 'DELETE_USER', payload: id });
+    const selectedRemoveUser = useCallback((id) => {
+        dispatch({ type: 'SELECTED_TO_REMOVE', payload: id });
     }, []);
 
     const defaultProps = {
@@ -33,7 +34,7 @@ export const UsersContextProvider = (props) => {
         getUsers,
         addUser,
         changeSort,
-        deleteUser,
+        selectedRemoveUser,
     };
 
     return (

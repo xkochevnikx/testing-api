@@ -12,9 +12,10 @@ export const reducer = (state, { type, payload }) => {
                 ...state,
                 sort: !state.sort,
             };
-        case 'DELETE_USER':
+        case 'SELECTED_TO_REMOVE':
             return {
                 ...state,
+                selected: payload,
             };
 
         default:

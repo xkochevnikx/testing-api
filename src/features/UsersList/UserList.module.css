@@ -19,3 +19,11 @@
 .listTitle {
     background-color: rgb(248, 240, 240);
 }
+
+.active {
+    background-color: rgb(122, 72, 72);
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    gap: 30px;
+}

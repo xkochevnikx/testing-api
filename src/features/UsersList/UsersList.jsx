@@ -1,10 +1,17 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { UsersContext } from '../../app/usersContext/usersContext';
 import { useUsers } from '../../shared/hooks/useUsers';
 import cls from './UserList.module.css';
 
 export const UsersList = () => {
-    const { state } = useContext(UsersContext);
+    const { state, selectedRemoveUser } = useContext(UsersContext);
+
+    const [active, setActive] = useState('');
+
+    const onRemoveHandler = (index) => {
+        setActive(index);
+        selectedRemoveUser(index);
+    };
 
     const sortedUsers = useUsers(state.users, state.sort);
 
@@ -16,8 +23,12 @@ export const UsersList = () => {
                 <li>Subscribtion</li>
                 <li>Employment</li>
             </ul>
-            {sortedUsers.map((user) => (
-                <ul key={user.id} className={cls.userList}>
+            {sortedUsers.map((user, index) => (
+                <ul
+                    key={user.id}
+                    className={active === index ? cls.active : cls.userList}
+                    onClick={(e) => onRemoveHandler(index)}
+                >
                     <li>{user.name}</li>
                     <li>{user.age}</li>
                     <li>{user.subscribe}</li>
