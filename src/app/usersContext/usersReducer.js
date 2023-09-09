@@ -12,6 +12,10 @@ export const reducer = (state, { type, payload }) => {
                 ...state,
                 sort: !state.sort,
             };
+        case 'DELETE_USER':
+            return {
+                ...state,
+            };
 
         default:
             return state;

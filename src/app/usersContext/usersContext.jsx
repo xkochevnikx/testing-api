@@ -24,11 +24,16 @@ export const UsersContextProvider = (props) => {
         dispatch({ type: 'CHANGE_SORT' });
     }, []);
 
+    const deleteUser = useCallback((id) => {
+        dispatch({ type: 'DELETE_USER', payload: id });
+    }, []);
+
     const defaultProps = {
         state,
         getUsers,
         addUser,
         changeSort,
+        deleteUser,
     };
 
     return (
