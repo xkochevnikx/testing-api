@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { UsersContext } from '../../app/usersContext/usersContext';
 import { MyInput } from '../../shared/ui/MyInput/MyInput';
 import { MySelect } from '../../shared/ui/MySelect/MySelect';
@@ -9,16 +9,12 @@ import { ThemeSwitcher } from '../../entities/ThemeSwitcher/ThemeSwitcher';
 import { options } from '../../shared/consts/optionsTitle';
 
 export const ControlPanel = () => {
-    const { state, addUser, changeSort } = useContext(UsersContext);
+    const { addUser, changeSort } = useContext(UsersContext);
 
     const [name, setName] = useState('');
     const [age, setAge] = useState(0);
     const [subs, setSubs] = useState('Subscribed');
     const [employed, setEmployed] = useState(false);
-
-    useEffect(() => {
-        localStorage.setItem(LOCAL_STORAGE_USERS, JSON.stringify(state.users));
-    }, [state]);
 
     const onAddUser = (e) => {
         e.preventDefault();
@@ -34,6 +30,10 @@ export const ControlPanel = () => {
         setAge(0);
         setSubs('Subscribed');
         setEmployed(false);
+        let users = localStorage.getItem(LOCAL_STORAGE_USERS);
+        let dataUsers = JSON.parse(users);
+        dataUsers.push(newUser);
+        localStorage.setItem(LOCAL_STORAGE_USERS, JSON.stringify(dataUsers));
     };
 
     return (
