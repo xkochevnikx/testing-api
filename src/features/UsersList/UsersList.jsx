@@ -16,6 +16,14 @@ export const UsersList = () => {
                 <li>Subscribtion</li>
                 <li>Employment</li>
             </ul>
+            {sortedUsers.map((user) => (
+                <ul key={user.id} className={cls.userList}>
+                    <li>{user.name}</li>
+                    <li>{user.age}</li>
+                    <li>{user.subscribe}</li>
+                    <li>{user.employed ? 'Employed' : 'Unemployed'}</li>
+                </ul>
+            ))}
         </section>
     );
 };

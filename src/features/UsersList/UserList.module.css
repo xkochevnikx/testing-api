@@ -1,12 +1,21 @@
 .listWrapper {
+    padding: 20px;
     display: flex;
     flex-direction: column;
     border: 1px solid black;
-    max-width: 300px;
+    max-width: 400px;
+    max-height: 300px;
+    overflow-y: scroll;
+}
+
+.listTitle,
+.userList {
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    gap: 30px;
 }
 
 .listTitle {
-    display: flex;
-    gap: 10px;
-    list-style: none;
+    background-color: rgb(248, 240, 240);
 }

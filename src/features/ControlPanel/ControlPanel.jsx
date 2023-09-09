@@ -6,6 +6,7 @@ import { MyButton } from '../../shared/ui/MyButton/MyButton';
 import { LOCAL_STORAGE_USERS } from '../../shared/consts/consts';
 import cls from './ControlPanel.module.css';
 import { ThemeSwitcher } from '../../entities/ThemeSwitcher/ThemeSwitcher';
+import { options } from '../../shared/consts/optionsTitle';
 
 export const ControlPanel = () => {
     const { state, addUser, changeSort } = useContext(UsersContext);
@@ -34,21 +35,6 @@ export const ControlPanel = () => {
         setSubs('Subscribed');
         setEmployed(false);
     };
-
-    const options = [
-        {
-            title: 'Subscribed',
-            selected: false,
-        },
-        {
-            title: 'Not subscribed',
-            selected: false,
-        },
-        {
-            title: 'Other',
-            selected: false,
-        },
-    ];
 
     return (
         <div className={cls.formWrapper}>

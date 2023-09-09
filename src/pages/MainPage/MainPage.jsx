@@ -8,12 +8,9 @@ export const MainPage = () => {
     const { getUsers } = useContext(UsersContext);
 
     useEffect(() => {
-        if (localStorage.getItem(LOCAL_STORAGE_USERS) === null) {
-            localStorage.setItem(LOCAL_STORAGE_USERS, JSON.stringify([]));
-        } else {
-            let dataUsers = localStorage.getItem(LOCAL_STORAGE_USERS);
-            getUsers(JSON.parse(dataUsers));
-        }
+        let dataUsers = localStorage.getItem(LOCAL_STORAGE_USERS);
+
+        getUsers(JSON.parse(dataUsers));
     }, []);
 
     return (
