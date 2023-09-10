@@ -3,13 +3,13 @@ import { UsersContext } from '../../app/usersContext/usersContext';
 import { MyInput } from '../../shared/ui/MyInput/MyInput';
 import { MySelect } from '../../shared/ui/MySelect/MySelect';
 import { MyButton } from '../../shared/ui/MyButton/MyButton';
-import { LOCAL_STORAGE_USERS } from '../../shared/consts/consts';
 import cls from './ControlPanel.module.css';
 import { ThemeSwitcher } from '../../entities/ThemeSwitcher/ThemeSwitcher';
 import { options } from '../../shared/consts/optionsTitle';
 
 export const ControlPanel = () => {
-    const { addUser, changeSort, state, getUsers } = useContext(UsersContext);
+    const { addUser, changeSort, state, updateUsersDatabase, removeUser } =
+        useContext(UsersContext);
 
     const [name, setName] = useState('');
     const [age, setAge] = useState('');
@@ -30,18 +30,8 @@ export const ControlPanel = () => {
         setAge('');
         setSubs('Subscribed');
         setEmployed(false);
-        let users = localStorage.getItem(LOCAL_STORAGE_USERS);
-        let dataUsers = JSON.parse(users);
-        dataUsers.push(newUser);
-        localStorage.setItem(LOCAL_STORAGE_USERS, JSON.stringify(dataUsers));
-    };
 
-    const removeUser = (id) => {
-        let users = localStorage.getItem(LOCAL_STORAGE_USERS);
-        let dataUsers = JSON.parse(users);
-        let data = dataUsers.filter((user) => user.id !== id);
-        localStorage.setItem(LOCAL_STORAGE_USERS, JSON.stringify(data));
-        getUsers(data);
+        updateUsersDatabase(newUser);
     };
 
     return (
