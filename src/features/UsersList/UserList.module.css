@@ -7,7 +7,7 @@
 
     overflow-y: scroll;
     background-color: var(--bg-color-panel);
-    gap: 10px;
+    gap: 12px;
 }
 
 .listTitle,
@@ -26,10 +26,12 @@
 }
 
 .active {
-    background-color: rgb(122, 72, 72);
+    padding: 2px;
+    border-radius: 4px;
+    background-color: #334154;
     display: flex;
     justify-content: space-around;
     list-style: none;
-
     gap: 30px;
+    color: rgb(248, 240, 240);
 }

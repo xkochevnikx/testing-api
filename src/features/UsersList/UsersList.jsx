@@ -31,7 +31,7 @@ export const UsersList = () => {
                 <ul
                     key={user.id}
                     className={active === index ? cls.active : cls.userList}
-                    onClick={(e) => onRemoveHandler(index)}
+                    onClick={() => onRemoveHandler(index)}
                 >
                     <li>{user.name}</li>
                     <li>{user.age}</li>
