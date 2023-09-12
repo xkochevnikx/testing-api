@@ -30,5 +30,6 @@
     display: flex;
     justify-content: space-around;
     list-style: none;
+
     gap: 30px;
 }
