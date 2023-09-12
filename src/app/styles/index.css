@@ -11,3 +11,9 @@
 .app {
     font-family: Consolas;
 }
+
+button,
+input,
+select {
+    font-family: Consolas;
+}

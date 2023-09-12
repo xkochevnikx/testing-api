@@ -1,6 +1,7 @@
 :root {
     --bg-color: white;
     --font-color: black;
-    --bg-color-inverted: black;
+    --bg-color-inverted: #334154;
     --font-color-inverted: white;
+    --bg-color-panel: #546583;
 }
