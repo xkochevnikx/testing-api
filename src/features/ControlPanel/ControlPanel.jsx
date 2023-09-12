@@ -6,9 +6,10 @@ import { MyButton } from '../../shared/ui/MyButton/MyButton';
 import cls from './ControlPanel.module.css';
 import { ThemeSwitcher } from '../../entities/ThemeSwitcher/ThemeSwitcher';
 import { options } from '../../shared/consts/optionsTitle';
+import { SortSwitcher } from '../../entities/SortSwitcher/SortSwitcher';
 
 export const ControlPanel = () => {
-    const { addUser, changeSort, state, updateUsersDatabase, removeUser } =
+    const { addUser, state, updateUsersDatabase, removeUser } =
         useContext(UsersContext);
 
     const [name, setName] = useState('');
@@ -55,24 +56,23 @@ export const ControlPanel = () => {
                     onChange={(e) => setSubs(e.target.value)}
                     value={subs}
                 />
-                <label className={cls.formCheckboxWrapper}>
-                    <MyInput
-                        type="checkbox"
-                        onChange={(e) => setEmployed(e.target.checked)}
-                        className={cls.formCheckbox}
-                    />
-                    <span className={cls.psevdoCheckbox}></span>
-                </label>
+                <div className={cls.switchers}>
+                    <ThemeSwitcher />
+                    <label className={cls.formCheckboxWrapper}>
+                        <MyInput
+                            type="checkbox"
+                            onChange={(e) => setEmployed(e.target.checked)}
+                            className={cls.formCheckbox}
+                        />
+                        <span className={cls.psevdoCheckbox}></span>
+                    </label>
+                    <SortSwitcher />
+                </div>
 
                 <MyButton onClick={(e) => onAddUser(e)} type="submit">
                     Insert
                 </MyButton>
             </form>
-
-            <div className={cls.switchers}>
-                <ThemeSwitcher />
-                <MyButton onClick={() => changeSort()}>Sort</MyButton>
-            </div>
 
             <MyButton onClick={() => removeUser(state.selected)}>
                 Delete

@@ -1,4 +1,4 @@
-.switcherWrapper {
+.sortWrapper {
     position: relative;
     display: inline-block;
     width: 60px;
@@ -11,7 +11,7 @@
     opacity: 0;
 }
 
-.slider {
+.sort {
     position: absolute;
     top: 0;
     bottom: 0;
@@ -23,7 +23,7 @@
     border-radius: 34px;
 }
 
-.slider::before {
+.sort::before {
     content: '';
     position: absolute;
     left: 4px;
@@ -35,14 +35,14 @@
     transition: 0.4s;
 }
 
-.checkbox:checked + .slider {
+.checkbox:checked + .sort {
     background-color: #2196f3;
 }
 
-.checkbox:focus + .slider {
+.checkbox:focus + .sort {
     box-shadow: 0 0 1px #2196f3;
 }
 
-.checkbox:checked + .slider:before {
+.checkbox:checked + .sort:before {
     transform: translateX(26px);
 }

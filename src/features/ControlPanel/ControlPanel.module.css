@@ -21,10 +21,10 @@
 }
 
 .formCheckboxWrapper {
+    display: inline-block;
     position: relative;
     width: 30px;
     height: 30px;
-    margin-left: auto;
 }
 
 .formCheckbox {
@@ -52,7 +52,7 @@
     height: 20px;
     border-radius: 50%;
     background-color: var(--bg-color-panel);
-    transition: all 0.5s;
+    transition: transform 0.2s;
     transform: scale(0);
 }
 
