@@ -55,12 +55,14 @@ export const ControlPanel = () => {
                     onChange={(e) => setSubs(e.target.value)}
                     value={subs}
                 />
-
-                <MyInput
-                    type="checkbox"
-                    onChange={(e) => setEmployed(e.target.checked)}
-                    className={cls.formCheckbox}
-                />
+                <label className={cls.formCheckboxWrapper}>
+                    <MyInput
+                        type="checkbox"
+                        onChange={(e) => setEmployed(e.target.checked)}
+                        className={cls.formCheckbox}
+                    />
+                    <span className={cls.psevdoCheckbox}></span>
+                </label>
 
                 <MyButton onClick={(e) => onAddUser(e)} type="submit">
                     Insert
