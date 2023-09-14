@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import { UsersContext } from '../../app/usersContext/usersContext';
 import cls from './SortSwitcher.module.css';
 

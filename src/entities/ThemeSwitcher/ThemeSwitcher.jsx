@@ -1,4 +1,3 @@
-import React from 'react';
 import { useTheme } from '../../shared/hooks/useTheme';
 import cls from './ThemeSwitcher.module.css';
 

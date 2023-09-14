@@ -1,12 +1,12 @@
-import React, { useContext, useState } from 'react';
+import { useContext, useState } from 'react';
 import { UsersContext } from '../../app/usersContext/usersContext';
 import { MyInput } from '../../shared/ui/MyInput/MyInput';
 import { MySelect } from '../../shared/ui/MySelect/MySelect';
 import { MyButton } from '../../shared/ui/MyButton/MyButton';
-import cls from './ControlPanel.module.css';
 import { ThemeSwitcher } from '../../entities/ThemeSwitcher/ThemeSwitcher';
 import { options } from '../../shared/consts/optionsTitle';
 import { SortSwitcher } from '../../entities/SortSwitcher/SortSwitcher';
+import cls from './ControlPanel.module.css';
 
 export const ControlPanel = () => {
     const { addUser, state, updateUsersDatabase, removeUser } =

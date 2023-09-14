@@ -1,10 +1,10 @@
-.myInput {
+.MyInput {
     padding: 10px;
     outline: none;
     border-radius: 10px;
     border: none;
 }
 
-.myInput:focus::placeholder {
+.MyInput:focus::placeholder {
     opacity: 0;
 }

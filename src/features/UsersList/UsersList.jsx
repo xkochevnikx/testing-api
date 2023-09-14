@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { UsersContext } from '../../app/usersContext/usersContext';
 import { useUsers } from '../../shared/hooks/useUsers';
 import cls from './UserList.module.css';
@@ -30,7 +30,9 @@ export const UsersList = () => {
             {sortedUsers.map((user, index) => (
                 <ul
                     key={user.id}
-                    className={active === index ? cls.active : cls.userList}
+                    className={`${cls.userList} ${
+                        active === index && cls.active
+                    }`}
                     onClick={() => onRemoveHandler(index)}
                 >
                     <li>{user.name}</li>
