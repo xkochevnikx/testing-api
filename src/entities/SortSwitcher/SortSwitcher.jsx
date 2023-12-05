@@ -4,6 +4,7 @@ import cls from './SortSwitcher.module.css';
 
 export const SortSwitcher = () => {
     const { changeSort } = useContext(UsersContext);
+
     return (
         <label className={cls.sortWrapper}>
             <input
